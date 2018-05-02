@@ -1,0 +1,101 @@
+@model Uncivilized.Models.Nation
+
+@{
+    ViewData["Title"] = "CreateNation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateNation</h2>
+
+<form asp-action="CreateNation">
+    <div class="form-horizontal">
+        <h4>Nation</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @*<div class="form-group">
+            <label asp-for="User" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="User" class="form-control" />
+                <span asp-validation-for="User" class="text-danger"></span>
+            </div>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Government" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Government" class="form-control">
+
+                    <option value="democracy">Democracy</option>
+                    <option value="dictatorship">Dictatorship</option>
+                    <option value="monarchy">Monarchy</option>
+                    <option value="parliment">Parliment</option>
+                    <option value="socialism">Socialism</option>
+                    <option value="theocracy">Theocracy</option>
+
+
+                </select>
+                <span asp-validation-for="Government" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Region" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Region" class="form-control">
+
+                    <option value="desert">Desert</option>
+                    <option value="forest">Forest</option>
+                    <option value="mountain">Mountain</option>
+                    <option value="plains">Plains</option>
+                    <option value="coastal">Coastal</option>
+                    <option value="delta">Delta</option>
+
+                </select>
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="Population" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Population" class="form-control" />
+                <span asp-validation-for="Population" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Happiness" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Happiness" class="form-control" />
+                <span asp-validation-for="Happiness" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Capital" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Capital" class="form-control" />
+                <span asp-validation-for="Capital" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Resources" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Resources" class="form-control" />
+                <span asp-validation-for="Resources" class="text-danger"></span>
+            </div>
+        </div>*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

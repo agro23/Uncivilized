@@ -77,7 +77,7 @@ namespace Uncivilized
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Game}/{action=CreateNation}/{id?}");
             });
             app.Run(async (context) =>
             {
