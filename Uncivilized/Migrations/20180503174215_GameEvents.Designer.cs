@@ -8,9 +8,10 @@ using Uncivilized.Models;
 namespace Uncivilized.Migrations
 {
     [DbContext(typeof(UncivilizedDbContext))]
-    partial class UncivilizedDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180503174215_GameEvents")]
+    partial class GameEvents
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.5");

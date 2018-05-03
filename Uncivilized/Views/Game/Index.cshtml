@@ -1,61 +1,110 @@
 
-@{
-    ViewData["Title"] = "Game";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    <title>AJAX Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        var money = 1000;
+        var resources = 1000;
+        var population = 1000;
+        var happiness = money * resources / population;
+          $(document).ready(function() {
+            $('.updateEvents').submit(function (event) {
+                event.preventDefault();
+                
 
-<h2>Game</h2>
+            //console.log($(this).serialize());
+            $.ajax({
+                url: '@Url.Action("ChooseEvent")',
+                type: 'GET',
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function (result) {
+                    var eventResult = result[0].name + "<br />" + result[0].description + "<br />";
+                    $('#Events').html(eventResult);
+                    money = money + result[0].capital;
+                    //resources = resources + result[0].resources;
+                    population = population + result[0].population;
+                    happiness = money * resources / population;
+                    //money = "MONEY: " + money.ToString();
+                    //$('#money').html('MONEY: ' + money.toString());
+                    $('#money').html("MONEY: " + money.toString());
+                    $('#resources').html("RESOURCES: " + resources.toString());
+                    $('#population').html("POPULATION: " + population.toString());
+                    $('#happiness').html("HAPPINESS: " + happiness.toString());
 
-<div class="container well">
-    <h2>OPTIONS</h2>
-    <div class="row">
+                    //$('#Events').html(result.name);
+                    //$('#Events').html(result);
 
-        <div class="col-md-3">
-            <h3>CAPITAL</h3>
-            <h4>Invest</h4>
-            <h4>Research</h4>
-            <h4>Defend</h4>
-            <h4>Expand</h4>
-            <h4>Pass</h4>
+                    //$('#Events').append("At least something shows up!");
+                    }
+                });
+            });
+        });
+    </script>
+
+    @{
+        ViewData["Title"] = "Game";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Game</h2>
+
+    <div class="container well">
+        <h2>OPTIONS</h2>
+        <div class="row">
+
+            <div class="col-md-3">
+                <h3>CAPITAL</h3>
+                <h4>Invest</h4>
+                <h4>Research</h4>
+                <h4>Defend</h4>
+                <h4>Expand</h4>
+                <h4>Pass</h4>
+
+            </div>
+
+            <div class="col-md-3">
+                <h3>RESOURCES</h3>
+                <h4>Extract</h4>
+                <h4>Conserve</h4>
+                <h4>Trade</h4>
+                <h4>Ration</h4>
+                <h4>Pass</h4>
+
+            </div>
+
+            <div class="col-md-4">
+                <h3>POPULATION</h3>
+                <h4>Entertain</h4>
+                <h4>Direct</h4>
+                <h4>Sacrifice</h4>
+                <h4>Educate</h4>
+                <h4>Pass</h4>
+
+            </div>
 
         </div>
 
-        <div class="col-md-3">
-            <h3>RESOURCES</h3>
-            <h4>Extract</h4>
-            <h4>Conserve</h4>
-            <h4>Trade</h4>
-            <h4>Ration</h4>
-            <h4>Pass</h4>
-
+        <div class="row">
+            <h4 id="money">MONEY: </h4>
+            <h4 id="resources">RESOURCES</h4>
+            <h4 id="population">POPULATION:</h4>
+            <h4 id="happiness">HAPPINESS:</h4>
+        </div>
+        <br />
+        <br />
+        <form action="ChooseEvent" class="updateEvents">
+            <label for="pushForEvent">Let's see an event!</label>
+            <button type="submit">End Turn</button>
+        </form>
+        <div class="row" id="Events">
+            <p>THIS IS WHERE THE MESSAGES GO</p>
         </div>
 
-        <div class="col-md-4">
-            <h3>POPULATION</h3>
-            <h4>Entertain</h4>
-            <h4>Direct</h4>
-            <h4>Sacrifice</h4>
-            <h4>Educate</h4>
-            <h4>Pass</h4>
+        @*<form action="RandomDestinationList" class="display-random-database-items">
+            <label for="destinationCount">How many destinations would you like to see?</label>
+            <input type="number" name="destinationCount" />
+            <button type="submit">Submit</button>
+        </form>*@
 
-        </div>
 
     </div>
-
-    <div class="row">
-        <h4>MONEY: </h4>
-        <h4>RESOURCES</h4>
-        <h4>POPULATION:</h4>
-        <h4>HAPPINESS:</h4>
-
-    </div>
-    <br />
-    <br />
-    <div class="row">
-        <p>THIS IS WHERE THE MESSAGES GO</p>
-    </div>
-
-
-
-
-</div>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Uncivilized.Models;
 
 namespace Uncivilized.Models
 {
@@ -11,6 +12,7 @@ namespace Uncivilized.Models
     {
         public DbSet<Destination> Destinations { get; set; }
         public DbSet<Nation> Nations { get; set; }
+        public DbSet<GameEvent> GameEvents { get; set; }
 
         public UncivilizedDbContext(DbContextOptions options) : base(options)
         {
@@ -29,5 +31,7 @@ namespace Uncivilized.Models
         {
             base.OnModelCreating(builder);
         }
+
+        public DbSet<Uncivilized.Models.GameEvent> GameEvent { get; set; }
     }
 }
